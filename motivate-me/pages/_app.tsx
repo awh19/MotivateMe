@@ -1,11 +1,10 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeProvider, useColorMode } from '@chakra-ui/react'
+import '../styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return(
+  return (
     <ChakraProvider>
-      <ColorModeScript initialColorMode='light'></ColorModeScript>
       <Component {...pageProps} />
     </ChakraProvider>
   )
