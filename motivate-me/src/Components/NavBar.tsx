@@ -12,12 +12,15 @@ import {
     useColorMode,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { FaBrain, FaCalendarCheck, FaMoon, FaSun, FaVideo } from 'react-icons/fa';
+import { FaBrain, FaCalendarCheck, FaHome, FaMoon, FaSun, FaVideo } from 'react-icons/fa';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
 const Links = [
-    { id: 1, label: 'Video Generator', icon: <FaVideo /> },
-    { id: 2, label: 'Affirmations', icon: <FaBrain /> },
-    { id: 3, label: 'Todo List', icon: <FaCalendarCheck /> }
+    { label: 'Home', icon: <FaHome />, path: '/' },
+    { label: 'Video Generator', icon: <FaVideo />, path: '/videos' },
+    { label: 'Affirmations', icon: <FaBrain />, path: '/affirms' },
+    { label: 'Todo List', icon: <FaCalendarCheck />, path: '/todo' }
 ];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -37,6 +40,13 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 export default function Simple() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode();
+    const router = useRouter();
+
+    const bgColor = {
+        light: 'teal',
+        dark: 'teal'
+    }
+
 
     return (
         <>
@@ -56,9 +66,9 @@ export default function Simple() {
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
                             {Links.map((link) => (
-                                <><Button key={link.id} leftIcon={link.icon} colorScheme='teal' variant='solid'>
+                                <Link as={NextLink} href={link.path}><Button key={link.path} leftIcon={link.icon} colorScheme={router.pathname === link.path ? bgColor[colorMode] : 'gray'} variant='solid'>
                                     {link.label}
-                                </Button></>
+                                </Button></Link>
                             ))}
                         </HStack>
                     </HStack>
@@ -71,9 +81,9 @@ export default function Simple() {
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
                             {Links.map((link) => (
-                                <><Button key={link.id} leftIcon={link.icon} colorScheme='teal' variant='solid'>
+                                <Link as={NextLink} href={link.path}><Button key={link.path} leftIcon={link.icon} colorScheme={router.pathname === link.path ? bgColor[colorMode] : 'gray'} variant='solid'>
                                     {link.label}
-                                </Button></>
+                                </Button></Link>
                             ))}
                         </Stack>
                     </Box>
