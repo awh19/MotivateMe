@@ -9,7 +9,7 @@ export default function Document() {
             <Head />
             <body>
                 {/* 👇 Here's the script */}
-                <ColorModeScript initialColorMode='light' />
+                <ColorModeScript initialColorMode='dark' />
                 <Main />
                 <NextScript />
             </body>
