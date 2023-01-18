@@ -1,3 +1,6 @@
+import "@fontsource/open-sans"
+import "@fontsource/outfit/700.css"
+
 import type { AppProps } from 'next/app'
 import { ChakraProvider, background, extendTheme } from '@chakra-ui/react'
 
@@ -15,7 +18,8 @@ const theme = extendTheme({
     disableTransitionOnChange: false
   },
   fonts: {
-    heading: `'Outfit', sans-serif`
+    heading: `'Outfit', sans-serif`,
+    body: `'Open-Sans', sans-serif`
   }
 });
 

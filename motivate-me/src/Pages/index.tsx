@@ -8,7 +8,7 @@ export default function Home() {
       <Heading
         mb="8"
         fontWeight="extrabold"
-        size="2xl"
+        size="4xl"
         bgColor="teal.300"
         bgClip="text">
         MotivateMe

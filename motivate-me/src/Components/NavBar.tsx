@@ -72,9 +72,6 @@ export default function Simple() {
                             ))}
                         </HStack>
                     </HStack>
-                    <Flex alignItems={'center'}>
-                        <IconButton icon={colorMode === 'light' ? <FaSun /> : <FaMoon />} aria-label="Change Color Mode" isRound={true} size="lg" alignSelf="flex-end" onClick={toggleColorMode}></IconButton>
-                    </Flex>
                 </Flex>
 
                 {isOpen ? (
